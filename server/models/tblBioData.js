@@ -2,7 +2,11 @@
 const mongoose = require("mongoose");
 
 const BioDataSchema = new mongoose.Schema({
-    otherNames: {
+    rsaPin: {
+        type: String,
+        required: true,
+    },
+    firstName: {
         type: String,
         required: true,
     },
@@ -22,11 +26,28 @@ const BioDataSchema = new mongoose.Schema({
         type: Number,
         
     },
-    
     employerName:{
         type: String
     },
+    paymentBatch:{
+        type: String
+    },
+    dob:{
+        type: String
+    }, 
+     dofa:{
+        type: String
+    }, 
+     edor:{
+        type: String
+    },
+    yearOfRetirement:{
+        type: String
+    },
+    
+
+
 });
-const BioDataModel = mongoose.model("tblBioData", BioDataSchema);// name of collection and the scheema that represents the model
+const BioDataModel = mongoose.model("tblBioDatas", BioDataSchema);// name of collection and the scheema that represents the model
 
 module.exports = BioDataModel;

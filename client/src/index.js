@@ -1,15 +1,24 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Dashboard from './dashboard';
+// import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import Dashboard from './dashboard';
+// import Navbar from './navBar';
+import PensionIncrease from './pensionIncrease';
+
 import reportWebVitals from './reportWebVitals';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-    <Dashboard/>
+    {/* <Dashboard/> */}
+    {/* <Navbar/> */}
+    <PensionIncrease/>
+    
 
   </React.StrictMode>
 );

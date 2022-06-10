@@ -1,10 +1,12 @@
 
 import './App.css';
 import { useState, useEffect } from "react";
-import dashboard from './dashboard';
+import { Dropdown, Button } from 'react-bootstrap';
+
 //the useEffet hook is just a function that runs immediately the page is loaded
 import Axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
+
+
 
 
 function App() {
@@ -53,6 +55,8 @@ function App() {
 
       
       <div>
+    
+        
         <h1>Register New Retiree</h1>
         
         <br></br>
@@ -62,7 +66,7 @@ function App() {
           onChange={(event) =>
             {setOtherNames(event.target.value);}} /> 
         <br>
-        {/* (above) this is a very common thing you do in react to get data from an input */}
+        {/* (above) this is  to get data from an input */}
         </br>
         <input 
           type = "text" 
@@ -89,7 +93,7 @@ function App() {
             {setEmployerName(event.target.value);}}/>  
         <br></br>
         <br></br>
-        <button onClick = {createRetiree} className="btn btn-primary">Add new Retiree</button>
+        <button onClick = {createRetiree} >Add new Retiree</button>
       </div>
       <div className="retireesDisplay">
       <h1>List of All Retirees</h1>

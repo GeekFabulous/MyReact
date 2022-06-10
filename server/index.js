@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 mongoose.connect(
+    // "mongodb+srv://imaan:imaan123@myfirstcluster.ec3t7.mongodb.net/cbrdDatabase?retryWrites=true&w=majority"
     "mongodb+srv://imaan:imaan123@myfirstcluster.ec3t7.mongodb.net/cbrdDatabase?retryWrites=true&w=majority"
     );
 
@@ -22,7 +23,6 @@ app.get("/getRetirees", (req,res) =>{
             res.json(result);//this is used to parse 'result' into json, the function will send back the result we got
         }
     });//the callback function will return 2 arguments the error and the result
-
 });
 
 app.post("/createRetiree",async (req,res) =>{
