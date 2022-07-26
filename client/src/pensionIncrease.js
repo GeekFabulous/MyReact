@@ -1,17 +1,16 @@
 import React from "react";
+import {Row,Form,FloatingLabel, Col} from "react-bootstrap";
 import {
-  FloatingLabel,
-  Form,
+  // FloatingLabel,
   Container,
   Table,
-  Col,
+  // Col,
   FormGroup,
   Modal,
   Button,
-  Row,
   Card,
-} from "react-bootstrap";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+} from "@mui/material";
+import { BrowserRouter as Router,  } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
@@ -25,7 +24,7 @@ function PensionIncrease() {
   const [gender, setGender] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [employerName, setEmployerName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
   const [paymentBatch, setPaymentBatch] = useState("");
   const [dob, setDob] = useState("");
   const [dofa, setDofa] = useState("");
@@ -45,6 +44,15 @@ function PensionIncrease() {
   const handleShowCompute = () => setShowCompute(true);
   const handleCloseCompute = () => setShowCompute(false);
 
+  const [showSearchSingle, setShowSearchSingle] = useState(false);
+  const handleShowSearchSingle = () => setShowSearchSingle(true);
+
+  const [showSearchBulk, setShowSearchBulk] = useState(false);
+  const handleShowSearchBulk = () => setShowSearchBulk(true);
+
+  const toggle=() =>{ return !handleShowSearchBulk};
+
+
   useEffect(() => {
     Axios.get("http://localhost:3001/getRetirees").then((response) => {
       setListOfRetirees(response.data);
@@ -54,12 +62,13 @@ function PensionIncrease() {
   const createRetiree = () => {
     handleCloseAddRetiree();
     Axios.post("http://localhost:3001/createRetiree", {
+      rsaPin: rsaPin,
       firstName: firstName, //we are passing the othernames state on the right
       lastName, //we dont have to equate it. we can just call the state directly like this. same thing
       gender,
       emailAddress,
       employerName,
-      phoneNumber,
+      // phoneNumber,
       paymentBatch,
       dob,
       dofa,
@@ -70,12 +79,13 @@ function PensionIncrease() {
       setListOfRetirees([
         ...listOfRetirees,
         {
+          rsaPin: rsaPin,
           firstName: firstName,
           lastName,
           gender,
           emailAddress,
           employerName,
-          phoneNumber,
+          // phoneNumber,
           paymentBatch,
           dob,
           dofa,
@@ -118,32 +128,32 @@ function PensionIncrease() {
         <Container>
           <Row style={{ display: "flex", justifyContent: "center" }}>
             <Col xs={7}>
-              <Form.Select variant="secondary">
-                <option>Single Computation</option>
-                <option>Bulk Computation</option>
-                <option></option>
+              <Form.Select variant="secondary" >
+                <option onClick={toggle}>Single Computation</option>
+                <option onClick={!handleShowSearchSingle}>Bulk Computation</option>
               </Form.Select>
             </Col>
           </Row>
           <pre></pre>
           <Row style={{ display: "flex", justifyContent: "center" }}>
-            <Col xs={3}>
-              <FormGroup>
+            <Col xs={3} >
+              <FormGroup >
                 <FloatingLabel
+               
                   controlId="floatingInputGrid"
                   label="Enter RSA PIN"
                 >
-                  <Form.Control type="text" placeholder="PEN123456789012" />
+                  <Form.Control type="text" placeholder="PEN123456789012" disabled = {!handleShowSearchSingle} />
                 </FloatingLabel>
               </FormGroup>
             </Col>
             <Col xs={3}>
-              <FormGroup>
+              <FormGroup disabled = {true}>
                 <FloatingLabel
                   controlId="floatingInputGrid"
                   label="Enter Start Date"
                 >
-                  <Form.Control type="date" placeholder="01/01/2070" />
+                  <Form.Control type="date" placeholder="01/01/2070" disabled = {handleShowSearchBulk}/>
                 </FloatingLabel>
               </FormGroup>
             </Col>
@@ -288,6 +298,7 @@ function PensionIncrease() {
                       }}
                     />
                   </FloatingLabel>
+                  <pre></pre>
 
                   <FloatingLabel
                     controlId="floatingInputGrid"

@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css';
 // import Dashboard from './dashboard';
 // import Navbar from './navBar';
-import PensionIncrease from './pensionIncrease';
+import PensionIncreaseMui from './pensionIncreaseMui';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -17,7 +16,9 @@ root.render(
     {/* <App /> */}
     {/* <Dashboard/> */}
     {/* <Navbar/> */}
-    <PensionIncrease/>
+    {/* <PensionIncrease/> */}
+    <PensionIncreaseMui/>
+
     
 
   </React.StrictMode>
